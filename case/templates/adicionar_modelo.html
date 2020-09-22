@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Principal </title>
+    <!-- <link rel = "stylesheet" href = "{{url_for ('static', filename = 'base.css' )}}" >   -->
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 70%;
+          margin-left: 15%;
+          background-color: white;
+          margin-top: 50px;
+          margin-bottom: 30px;
+          
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+          text-align: center;
+          text-decoration-color: orange;
+          font-size: 20px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+          text-align: center;
+        }
+        th{
+            text-decoration-color: orange;
+        }
+
+        img{
+            width: 70px;
+            margin-top: 30px;
+            margin-left: 40px;
+        }
+        
+
+        /* CURSOS */
+        .tudo {
+            border-style: solid; border-width: 1px; border-color: #8E8E8E; border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background-color: orange;
+            font-family: Philosopher-Regular;
+            background-image: url(https://cdn.shopify.com/s/files/1/0305/4075/9177/products/N05139_2.jpg?v=1594487835);
+            
+        }
+
+        .botoes{
+            display: grid;
+            height: 20px;
+            grid-template-columns: auto auto auto auto auto;
+            grid-gap: 10px;
+            padding: 10px;
+            margin-left: 80px;
+            margin-bottom: 20px;
+        }
+
+        .botao{
+            background-color: orange;
+            text-decoration-color: white;
+            font-size: 20px;
+
+        }
+
+        .titulo{
+            text-decoration-color: white;
+            text-size-adjust: 200px;
+            margin-left: 150px;
+            font-size: 70px;
+            margin-top: -75px;
+        
+        }
+        .cima{
+            margin-top: 0px;
+        }
+
+        .form-inline {  
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        }
+
+        .form-inline label {
+        margin: 5px 10px 5px 0;
+        }
+
+        .form-inline input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        }
+
+        .form-inline button {
+        padding: 10px 20px;
+        background-color: dodgerblue;
+        border: 1px solid #ddd;
+        color: white;
+        cursor: pointer;
+        }
+
+        .form-inline button:hover {
+        background-color: royalblue;
+        }
+
+        @media (max-width: 800px) {
+        .form-inline input {
+            margin: 10px 0;
+        }
+        
+        .form-inline {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        }
+    
+
+        </style>
+        </head>
+
+        
+   
+	
+<body>
+    <div class="tudo"> 
+    <div class= "cima">
+        <img src = "{{url_for ('static', filename = 'carro.jpg')}}" align = "middle" />
+        <h1 class="titulo">Adicionar modelo</h1>
+    </div>
+    
+    <form class="form-inline" action="" method="post">
+        <p >Modelo</p>   
+        <p > <input type="text"  id="modelo" name="modelo" ></p>
+        <p >Motor</p>
+        <p > <input type="text"  id="motor" name="motor" ></p>
+        <p >Ano</p>
+        <p > <input type="text"  id="ano" name="ano" ></p>
+        <p >Marca</p>
+        <p > <input type="text"  id="marca" name="marca" ></p>
+        <p >Preço</p>
+        <p > <input type="text"  id="preco" name="preco" ></p>
+        <p> <input type="submit"  id="Adiciona" name="Adicionar" ></p>
+
+    </form>
+    
+    <table>
+        <tr>
+            <th >Modelo</th>
+            <th  >Motor</th>
+            <th >Marca</th>
+            <th >Ano</th>
+            <th >Preço</th>
+        </tr>
+        {% for carro in carros %}
+        <tr>
+            {% for key in carro.values() %}
+            
+                <td> {{ key }} </td>
+            
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    
+        
+    <div  class="botoes"> 
+    <a href="/index" ><button class="botao" >Informações gerais</button></a>
+    <a href="/filtrar" ><button class="botao">Filtrar Modelo</button></a>
+    <a href="/add" ><button class="botao">Adicionar Modelo</button></a>
+    <a href="/alterar" ><button class="botao">Alterar Modelo</button></a>
+    <a href="/delet" ><button class="botao">Remover Modelo</button></a>
+    </div>   
+</div>
+</body>
+
+</html>
